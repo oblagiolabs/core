@@ -22,3 +22,7 @@ Fitur :
 5. Running Project (localhost/yourproject/public/admin-cp or yourproject.dev/admin-cp)
 
 6. Login  : Username and Password reza , reza123
+
+## Documentation
+
+Coming Soon ! 
