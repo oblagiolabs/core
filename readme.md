@@ -1,5 +1,5 @@
 ## OBLAGIO CORE 
-Source Code Core Backend / Admin Pembuatan Website
+Source Code Core Backend / Admin 
 
 Fitur :
 
