@@ -30,6 +30,12 @@ class Helper
 
 	}
 
+	public function elfinder()
+
+	{
+		return $this->assetUrl().'oblagio/elfinder/';
+	}
+
 	public function injectModel($model)
 
 	{
@@ -190,7 +196,7 @@ class Helper
 		$cekAction = $this->injectModel('Action')->whereAction($action)->first(); // Cek Action in actions table
 		if(!empty($cekAction->id))
 		{
-			$menu_id = $this->getMenu()->id;
+			$menu_id = @$this->getMenu()->id;
 			
 			$cekMenuAction = $this->injectModel('MenuAction')->whereActionId($cekAction->id)->whereMenuId($menu_id)->first();
 			if(!empty($cekMenuAction->id))
