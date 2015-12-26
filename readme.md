@@ -1,5 +1,13 @@
 ## OBLAGIO CORE 
-Source Code Core Backend / Admin Pembuatan Website dengan fitur Hak akses.
+Source Code Core Backend / Admin Pembuatan Website
+
+Fitur :
+
+1. Hak Akses
+
+2. Helpers ready : Generator Datatables Server Side , Buttons , Ect (Cek Packages/Oblagio files)  
+
+3. Admin LTE
 
 ## Cara Install :
 
