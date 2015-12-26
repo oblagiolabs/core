@@ -13,7 +13,7 @@ Route::get('form-validation' , 'Backend\BackendController@getFormvalidation');
 Route::get('oblagio-table' , 'Backend\BackendController@getOblagiotable');
 Route::get('forgot-password' , 'Backend\AjaxController@forgotPassword');
 Route::controller('login' , 'Backend\LoginController');
-Route::group(['prefix' => helper()->backendName , 'middleware' => ['auth' , 'right']] ,  function(){
+Route::group(['prefix' => oblagioSetting()['backendName'] , 'middleware' => ['auth' , 'right']] ,  function(){
 
 	Route::get('/','Backend\DefaultController@getIndex');
 	 foreach(helper()->injectModel('Menu')->where('controller' , '!=' , '#')->get() as $row)

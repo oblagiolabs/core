@@ -8,8 +8,13 @@ class Helper
 	
 	public $appName = 'Oblagio Core';
 
-	public $backendName = 'admin-cp';
+	public $backendName;
 
+	public function __construct()
+
+	{
+		$this->backendName = oblagioSetting()['backendName'];
+	}
 
 	public function assetUrl()
 
