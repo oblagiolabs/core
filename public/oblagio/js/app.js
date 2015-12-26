@@ -46,3 +46,44 @@ function oblagioValidate()
 	});
 }
 
+function cekAllChildToAction(child , action)
+{
+	if($('#'+child).is(":checked"))
+	{
+		$( "input[id^='"+action+"']" ).prop('checked', true);  
+	}else{
+		$( "input[id^='"+action+"']" ).prop('checked', false);  
+	}
+		
+}
+
+function cekAllParentToChild(parent , child , action)
+
+{
+	if($('#'+parent).is(":checked"))
+	{
+		$( "input[id^='"+child+"']" ).prop('checked', true); 
+		$( "input[id^='"+action+"']" ).prop('checked', true);  
+	}else{
+		$( "input[id^='"+child+"']" ).prop('checked', false);
+		$( "input[id^='"+action+"']" ).prop('checked', false);  
+	}
+
+
+}
+
+function cekAll(id)
+
+{
+	if($('#'+id).is(":checked"))
+	{
+		$( "input[id^='parent']" ).prop('checked', true); 
+		$( "input[id^='action']" ).prop('checked', true);
+		$( "input[id^='child']" ).prop('checked', true); 
+		
+	}else{
+		$( "input[id^='parent']" ).prop('checked', false); 
+		$( "input[id^='action']" ).prop('checked', false);
+		$( "input[id^='child']" ).prop('checked', false);  
+	}
+}
