@@ -38,9 +38,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     
     <!-- jQuery 2.1.3 -->
     <script src="{{ helper()->adminLte() }}plugins/jQuery/jQuery-2.1.3.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
     <!-- Bootstrap 3.3.2 JS -->
-    <script src="{{ helper()->adminLte() }}bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <!-- AdminLTE App -->
+
     <script src="{{ helper()->adminLte() }}dist/js/app.min.js" type="text/javascript"></script>
     <script src="{{ helper()->assetUrl() }}oblagio/js/datatables.js" type="text/javascript"></script>
     <script src="{{ helper()->adminLte() }}plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>

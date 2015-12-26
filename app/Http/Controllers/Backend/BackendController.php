@@ -52,5 +52,10 @@ class BackendController extends Controller
 		]);
 	}	
 
+	public function elfinder()
+
+	{
+		return view('backend.layouts.elfinder');
+	}
 	
 }
