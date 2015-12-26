@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2015-12-25 18:18:07
+Date: 2015-12-26 14:40:24
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -98,7 +98,7 @@ CREATE TABLE `menus` (
   PRIMARY KEY (`id`),
   KEY `menus_parent_id_controller_permalink_order_index` (`parent_id`,`controller`,`permalink`,`order`),
   KEY `menus_model_index` (`model`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of menus
@@ -111,6 +111,8 @@ INSERT INTO menus VALUES ('5', '0', '#', 'User', '#', '', '', '9', '0000-00-00 0
 INSERT INTO menus VALUES ('6', '5', 'Backend\\RoleController', 'Role', 'roles', 'Role', '', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 INSERT INTO menus VALUES ('7', '5', 'Backend\\UserController', 'User', 'users', 'User', '', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 INSERT INTO menus VALUES ('8', '1', 'Backend\\MenuController', 'Menu', 'menus', 'Menu', '', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO menus VALUES ('9', '0', '#', 'Media Library', '##', '#', '', '2', '2015-12-26 21:45:03', '2015-12-26 21:45:03');
+INSERT INTO menus VALUES ('10', '9', 'Backend\\MediaController', 'Media Library', 'media-library', '', '', '1', '2015-12-26 21:45:36', '2015-12-26 21:45:36');
 
 -- ----------------------------
 -- Table structure for `menu_actions`
@@ -127,7 +129,7 @@ CREATE TABLE `menu_actions` (
   KEY `menu_actions_action_id_foreign` (`action_id`),
   CONSTRAINT `menu_actions_action_id_foreign` FOREIGN KEY (`action_id`) REFERENCES `actions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `menu_actions_menu_id_foreign` FOREIGN KEY (`menu_id`) REFERENCES `menus` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of menu_actions
@@ -154,6 +156,7 @@ INSERT INTO menu_actions VALUES ('65', '7', '2', '2015-12-25 11:06:58', '2015-12
 INSERT INTO menu_actions VALUES ('66', '7', '3', '2015-12-25 11:06:58', '2015-12-25 11:06:58');
 INSERT INTO menu_actions VALUES ('67', '7', '4', '2015-12-25 11:06:58', '2015-12-25 11:06:58');
 INSERT INTO menu_actions VALUES ('68', '7', '7', '2015-12-25 11:06:58', '2015-12-25 11:06:58');
+INSERT INTO menu_actions VALUES ('69', '10', '7', '2015-12-26 21:47:37', '2015-12-26 21:47:37');
 
 -- ----------------------------
 -- Table structure for `migrations`
@@ -209,54 +212,56 @@ CREATE TABLE `rights` (
   KEY `rights_menu_action_id_foreign` (`menu_action_id`),
   CONSTRAINT `rights_menu_action_id_foreign` FOREIGN KEY (`menu_action_id`) REFERENCES `menu_actions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `rights_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=185 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=274 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of rights
 -- ----------------------------
-INSERT INTO rights VALUES ('104', '1', '60', '2015-12-25 11:09:46', '2015-12-25 11:09:46');
-INSERT INTO rights VALUES ('105', '1', '61', '2015-12-25 11:09:46', '2015-12-25 11:09:46');
-INSERT INTO rights VALUES ('106', '1', '62', '2015-12-25 11:09:46', '2015-12-25 11:09:46');
-INSERT INTO rights VALUES ('107', '1', '63', '2015-12-25 11:09:46', '2015-12-25 11:09:46');
-INSERT INTO rights VALUES ('108', '1', '64', '2015-12-25 11:09:46', '2015-12-25 11:09:46');
-INSERT INTO rights VALUES ('109', '1', '65', '2015-12-25 11:09:46', '2015-12-25 11:09:46');
-INSERT INTO rights VALUES ('110', '1', '66', '2015-12-25 11:09:46', '2015-12-25 11:09:46');
-INSERT INTO rights VALUES ('111', '1', '67', '2015-12-25 11:09:46', '2015-12-25 11:09:46');
-INSERT INTO rights VALUES ('112', '1', '68', '2015-12-25 11:09:46', '2015-12-25 11:09:46');
-INSERT INTO rights VALUES ('113', '1', '31', '2015-12-25 11:09:46', '2015-12-25 11:09:46');
-INSERT INTO rights VALUES ('114', '1', '32', '2015-12-25 11:09:46', '2015-12-25 11:09:46');
-INSERT INTO rights VALUES ('115', '1', '33', '2015-12-25 11:09:46', '2015-12-25 11:09:46');
-INSERT INTO rights VALUES ('116', '1', '34', '2015-12-25 11:09:46', '2015-12-25 11:09:46');
-INSERT INTO rights VALUES ('117', '1', '35', '2015-12-25 11:09:46', '2015-12-25 11:09:46');
-INSERT INTO rights VALUES ('118', '1', '46', '2015-12-25 11:09:46', '2015-12-25 11:09:46');
-INSERT INTO rights VALUES ('119', '1', '47', '2015-12-25 11:09:46', '2015-12-25 11:09:46');
-INSERT INTO rights VALUES ('120', '1', '48', '2015-12-25 11:09:46', '2015-12-25 11:09:46');
-INSERT INTO rights VALUES ('121', '1', '49', '2015-12-25 11:09:46', '2015-12-25 11:09:46');
-INSERT INTO rights VALUES ('122', '1', '50', '2015-12-25 11:09:46', '2015-12-25 11:09:46');
-INSERT INTO rights VALUES ('123', '1', '51', '2015-12-25 11:09:46', '2015-12-25 11:09:46');
-INSERT INTO rights VALUES ('124', '1', '52', '2015-12-25 11:09:46', '2015-12-25 11:09:46');
-INSERT INTO rights VALUES ('125', '1', '53', '2015-12-25 11:09:46', '2015-12-25 11:09:46');
-INSERT INTO rights VALUES ('164', '5', '60', '2015-12-26 02:13:45', '2015-12-26 02:13:45');
-INSERT INTO rights VALUES ('165', '5', '61', '2015-12-26 02:13:45', '2015-12-26 02:13:45');
-INSERT INTO rights VALUES ('166', '5', '62', '2015-12-26 02:13:45', '2015-12-26 02:13:45');
-INSERT INTO rights VALUES ('167', '5', '63', '2015-12-26 02:13:45', '2015-12-26 02:13:45');
-INSERT INTO rights VALUES ('168', '5', '64', '2015-12-26 02:13:45', '2015-12-26 02:13:45');
-INSERT INTO rights VALUES ('169', '5', '65', '2015-12-26 02:13:45', '2015-12-26 02:13:45');
-INSERT INTO rights VALUES ('170', '5', '66', '2015-12-26 02:13:45', '2015-12-26 02:13:45');
-INSERT INTO rights VALUES ('171', '5', '67', '2015-12-26 02:13:45', '2015-12-26 02:13:45');
-INSERT INTO rights VALUES ('172', '5', '68', '2015-12-26 02:13:45', '2015-12-26 02:13:45');
-INSERT INTO rights VALUES ('173', '5', '31', '2015-12-26 02:13:45', '2015-12-26 02:13:45');
-INSERT INTO rights VALUES ('174', '5', '32', '2015-12-26 02:13:45', '2015-12-26 02:13:45');
-INSERT INTO rights VALUES ('175', '5', '33', '2015-12-26 02:13:45', '2015-12-26 02:13:45');
-INSERT INTO rights VALUES ('176', '5', '34', '2015-12-26 02:13:45', '2015-12-26 02:13:45');
-INSERT INTO rights VALUES ('177', '5', '35', '2015-12-26 02:13:45', '2015-12-26 02:13:45');
-INSERT INTO rights VALUES ('178', '5', '46', '2015-12-26 02:13:46', '2015-12-26 02:13:46');
-INSERT INTO rights VALUES ('179', '5', '47', '2015-12-26 02:13:46', '2015-12-26 02:13:46');
-INSERT INTO rights VALUES ('180', '5', '49', '2015-12-26 02:13:46', '2015-12-26 02:13:46');
-INSERT INTO rights VALUES ('181', '5', '50', '2015-12-26 02:13:46', '2015-12-26 02:13:46');
-INSERT INTO rights VALUES ('182', '5', '51', '2015-12-26 02:13:46', '2015-12-26 02:13:46');
-INSERT INTO rights VALUES ('183', '5', '52', '2015-12-26 02:13:46', '2015-12-26 02:13:46');
-INSERT INTO rights VALUES ('184', '5', '53', '2015-12-26 02:13:46', '2015-12-26 02:13:46');
+INSERT INTO rights VALUES ('229', '5', '60', '2015-12-26 09:11:00', '2015-12-26 09:11:00');
+INSERT INTO rights VALUES ('230', '5', '61', '2015-12-26 09:11:01', '2015-12-26 09:11:01');
+INSERT INTO rights VALUES ('231', '5', '62', '2015-12-26 09:11:01', '2015-12-26 09:11:01');
+INSERT INTO rights VALUES ('232', '5', '63', '2015-12-26 09:11:01', '2015-12-26 09:11:01');
+INSERT INTO rights VALUES ('233', '5', '64', '2015-12-26 09:11:01', '2015-12-26 09:11:01');
+INSERT INTO rights VALUES ('234', '5', '65', '2015-12-26 09:11:01', '2015-12-26 09:11:01');
+INSERT INTO rights VALUES ('235', '5', '66', '2015-12-26 09:11:01', '2015-12-26 09:11:01');
+INSERT INTO rights VALUES ('236', '5', '67', '2015-12-26 09:11:01', '2015-12-26 09:11:01');
+INSERT INTO rights VALUES ('237', '5', '68', '2015-12-26 09:11:01', '2015-12-26 09:11:01');
+INSERT INTO rights VALUES ('238', '5', '31', '2015-12-26 09:11:01', '2015-12-26 09:11:01');
+INSERT INTO rights VALUES ('239', '5', '32', '2015-12-26 09:11:01', '2015-12-26 09:11:01');
+INSERT INTO rights VALUES ('240', '5', '33', '2015-12-26 09:11:01', '2015-12-26 09:11:01');
+INSERT INTO rights VALUES ('241', '5', '34', '2015-12-26 09:11:01', '2015-12-26 09:11:01');
+INSERT INTO rights VALUES ('242', '5', '35', '2015-12-26 09:11:01', '2015-12-26 09:11:01');
+INSERT INTO rights VALUES ('243', '5', '46', '2015-12-26 09:11:01', '2015-12-26 09:11:01');
+INSERT INTO rights VALUES ('244', '5', '47', '2015-12-26 09:11:01', '2015-12-26 09:11:01');
+INSERT INTO rights VALUES ('245', '5', '48', '2015-12-26 09:11:01', '2015-12-26 09:11:01');
+INSERT INTO rights VALUES ('246', '5', '49', '2015-12-26 09:11:01', '2015-12-26 09:11:01');
+INSERT INTO rights VALUES ('247', '5', '50', '2015-12-26 09:11:01', '2015-12-26 09:11:01');
+INSERT INTO rights VALUES ('248', '5', '51', '2015-12-26 09:11:01', '2015-12-26 09:11:01');
+INSERT INTO rights VALUES ('249', '5', '52', '2015-12-26 09:11:01', '2015-12-26 09:11:01');
+INSERT INTO rights VALUES ('250', '5', '53', '2015-12-26 09:11:01', '2015-12-26 09:11:01');
+INSERT INTO rights VALUES ('251', '1', '69', '2015-12-26 21:48:15', '2015-12-26 21:48:15');
+INSERT INTO rights VALUES ('252', '1', '60', '2015-12-26 21:48:15', '2015-12-26 21:48:15');
+INSERT INTO rights VALUES ('253', '1', '61', '2015-12-26 21:48:15', '2015-12-26 21:48:15');
+INSERT INTO rights VALUES ('254', '1', '62', '2015-12-26 21:48:15', '2015-12-26 21:48:15');
+INSERT INTO rights VALUES ('255', '1', '63', '2015-12-26 21:48:15', '2015-12-26 21:48:15');
+INSERT INTO rights VALUES ('256', '1', '64', '2015-12-26 21:48:15', '2015-12-26 21:48:15');
+INSERT INTO rights VALUES ('257', '1', '65', '2015-12-26 21:48:15', '2015-12-26 21:48:15');
+INSERT INTO rights VALUES ('258', '1', '66', '2015-12-26 21:48:15', '2015-12-26 21:48:15');
+INSERT INTO rights VALUES ('259', '1', '67', '2015-12-26 21:48:15', '2015-12-26 21:48:15');
+INSERT INTO rights VALUES ('260', '1', '68', '2015-12-26 21:48:15', '2015-12-26 21:48:15');
+INSERT INTO rights VALUES ('261', '1', '31', '2015-12-26 21:48:15', '2015-12-26 21:48:15');
+INSERT INTO rights VALUES ('262', '1', '32', '2015-12-26 21:48:15', '2015-12-26 21:48:15');
+INSERT INTO rights VALUES ('263', '1', '33', '2015-12-26 21:48:15', '2015-12-26 21:48:15');
+INSERT INTO rights VALUES ('264', '1', '34', '2015-12-26 21:48:15', '2015-12-26 21:48:15');
+INSERT INTO rights VALUES ('265', '1', '35', '2015-12-26 21:48:15', '2015-12-26 21:48:15');
+INSERT INTO rights VALUES ('266', '1', '46', '2015-12-26 21:48:15', '2015-12-26 21:48:15');
+INSERT INTO rights VALUES ('267', '1', '47', '2015-12-26 21:48:15', '2015-12-26 21:48:15');
+INSERT INTO rights VALUES ('268', '1', '48', '2015-12-26 21:48:15', '2015-12-26 21:48:15');
+INSERT INTO rights VALUES ('269', '1', '49', '2015-12-26 21:48:15', '2015-12-26 21:48:15');
+INSERT INTO rights VALUES ('270', '1', '50', '2015-12-26 21:48:15', '2015-12-26 21:48:15');
+INSERT INTO rights VALUES ('271', '1', '51', '2015-12-26 21:48:15', '2015-12-26 21:48:15');
+INSERT INTO rights VALUES ('272', '1', '52', '2015-12-26 21:48:15', '2015-12-26 21:48:15');
+INSERT INTO rights VALUES ('273', '1', '53', '2015-12-26 21:48:15', '2015-12-26 21:48:15');
 
 -- ----------------------------
 -- Table structure for `roles`
