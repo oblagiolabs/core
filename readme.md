@@ -3,7 +3,7 @@ Source Code Core Backend / Admin Pembuatan Website
 
 Fitur :
 
-1. Hak Akses
+1. Hak Akses (Create , Update , Delete , View dan bisa tambah sendiri :D )
 
 2. Helpers ready : Generator Datatables Server Side , Buttons , Ect (Cek Packages/Oblagio files)  
 
