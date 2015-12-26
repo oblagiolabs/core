@@ -7,7 +7,9 @@ Fitur :
 
 2. Helpers ready : Generator Datatables Server Side , Buttons , Ect (Cek Packages/Oblagio files)  
 
-3. Admin LTE
+3. Ajax Form Validation
+
+4. Admin LTE
 
 ## Cara Install :
 
