@@ -30,7 +30,7 @@
             "Oblagio\\Html\\" : "Packages/Oblagio/Html/Src/"
         },
         "files" : [
-
+            "Packages/Oblagio/Setting.php",
             "Packages/Oblagio/Helpers/Src/Instance.php",
             "Packages/Oblagio/Helpers/Src/FastHelper.php",
             "Packages/Oblagio/Html/Src/IntanceHtml.php"

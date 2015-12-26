@@ -13,7 +13,19 @@
 <ul class="sidebar-menu">
   <li class="header">MENU</li>
   <!-- Optionally, you can add icons to the links -->
-  @foreach($model->whereParentId(0)->orderBy('order' , 'asc')->get() as $row)
+  
+  <?php
+    $statusProject = oblagioSetting()['statusProject'];
+    if($statusProject == 'live')
+    {
+      $parents = $model->whereParentId(0)->where('id' , '!=' ,1)->orderBy('order' , 'asc')->get();
+    }elseif($statusProject == 'dev'){
+      $parents = $model->whereParentId(0)->orderBy('order' , 'asc')->get();
+    }
+    
+  ?>
+
+  @foreach($parents as $row)
   
   <?php
     $childs = $model->whereParentId($row->id)->orderBy('order' , 'asc');
