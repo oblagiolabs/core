@@ -12,10 +12,12 @@ class Crud extends Model
 
     // jika anda mengaktifkan ajax validasi maka wajib ditulis seperti dibawah ini
     
-    public $messages = ['name.required' => 'nama gaboleh kosong'];
+    public $messages = ['name.required' => 'nama gaboleh kosong']; // messages unttuk validasi
     
     public function rules($id = "")
-
+    
+     // method rules (aturan) yang harus di tulis jika ingin menggunakan ajax form validasi bawaan oblagio
+     // Wajib Ditulis public function rules()
     {
 
     	if(!empty($id))

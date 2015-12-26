@@ -5,33 +5,45 @@ namespace App\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Controllers\Backend\BackendController;
+use App\Http\Controllers\Backend\BackendController; 
 use App\Models\Crud;
 use Datatables;
 
 class CrudController extends BackendController
 {
+    /*
+        |--------------------------------------------------------------------------
+        | Keterangan
+        |--------------------------------------------------------------------------
+        |
+        | Contoh membuat Controller 
+        | Jika di default Laravel 5 controller mengextends Class Controller maka disini aturanya mengexteds BackendController
+        | Tapi Tidak tidak masalah jika mengexteds Class Controller langsung , hanya ada beberapa fitur yang tidak bisa dipakai
+        |
+    */
 
     public function __construct()
 
 	{
 		$this->model = new Crud;
-	   // $this->breadcrumbs = ['index' => ['hello' , 'name' , 'gue' , 'reza']]; // custom breadcrumbs example
+	   // $this->breadcrumbs = ['index' => ['hello' , 'name' , 'gue' , 'reza']]; // controh pembuatan breadcrumbs manual
     }
 
-    public function getIndex()
+    public function getIndex() // method index -> tampilan awal
 
     {
-        return view('backend.crud.index');
+        return view('backend.crud.index'); // render view 
     }
 
-    public function getData()
-
+    public function getData() 
+    // method data -> untuk mengambil data dari database dan ditampilkan di datatables yang ada di view yang ada di method index
     {
 
-        $buttons = function($id){
-            return html()->buttons($id);
+        $buttons = function($id){ // anonymous function untuk menampilkan buttons
+            return html()->buttons($id); // helper buttons oblagio
         };
+
+        // untuk script di bawah silahkan baca dokumentasi packages yajra datatables;
 
     	$model = $this->model->select('id' , 'name' ,'role' ,  'address');
     	
@@ -45,7 +57,10 @@ class CrudController extends BackendController
         ->make(true);
     	
     	return $data;
+        //
     }
+
+    // untuk method dibawah silahkan baca dokumentasi laravel 5
 
     public function getCreate()
 

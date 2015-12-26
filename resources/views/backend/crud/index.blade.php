@@ -12,6 +12,7 @@
 	                  </h3>
 	                </div><!-- /.box-header -->
 	                <div class="box-body">
+	                	<!--  Contoh penulisan helper olagioTable -->
 		                {!! html()->oblagioTable([
 				            ['data' => 'name' , 'name' => 'name'],
 				            ['data' => 'role' , 'name' => 'role'],
