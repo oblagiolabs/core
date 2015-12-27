@@ -193,32 +193,48 @@ class Helper
 	public function getRight($action)
 
 	{
-		$cekAction = $this->injectModel('Action')->whereAction($action)->first(); // Cek Action in actions table
-		if(!empty($cekAction->id))
-		{
-			$menu_id = @$this->getMenu()->id;
-			
-			$cekMenuAction = $this->injectModel('MenuAction')->whereActionId($cekAction->id)->whereMenuId($menu_id)->first();
-			if(!empty($cekMenuAction->id))
-			{
-				$cekRight = $this->injectModel('Right')->whereRoleId(\Auth::user()->role_id)->whereMenuActionId($cekMenuAction->id)->first();
+		$menu_id = @$this->getMenu()->id;
+		
+		($menu_id == '') ? $menu_id = 0 : $menu_id = $menu_id;
 
-				if(!empty($cekRight))
-				{
-					return 'true';
-				}else{
-					return 'false';
-				}
+		$role_id = \Auth::user()->role_id;
 
-			}else{
-				return 'go';	
-			}
-			
-		}else{
-			return 'go';
-		}	
-			
+		$sql = "SELECT cek_right('$action' , $menu_id , $role_id) AS status";
+	
+		$DB = \DB::select($sql);
+
+		return $DB[0]->status;
 	}
+
+	// public function getRight($action)
+
+	// {
+	// 	$cekAction = $this->injectModel('Action')->whereAction($action)->first(); // Cek Action in actions table
+	// 	if(!empty($cekAction->id))
+	// 	{
+	// 		$menu_id = @$this->getMenu()->id;
+			
+	// 		$cekMenuAction = $this->injectModel('MenuAction')->whereActionId($cekAction->id)->whereMenuId($menu_id)->first();
+	// 		if(!empty($cekMenuAction->id))
+	// 		{
+	// 			$cekRight = $this->injectModel('Right')->whereRoleId(\Auth::user()->role_id)->whereMenuActionId($cekMenuAction->id)->first();
+
+	// 			if(!empty($cekRight))
+	// 			{
+	// 				return 'true';
+	// 			}else{
+	// 				return 'false';
+	// 			}
+
+	// 		}else{
+	// 			return 'go';	
+	// 		}
+			
+	// 	}else{
+	// 		return 'go';
+	// 	}	
+			
+	// }
 
 	public function flash($title , $text , $type)
 
