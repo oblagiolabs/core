@@ -1,5 +1,6 @@
 <?php namespace Oblagio\Html;
 
+use Form;
 
 class Html
 
@@ -141,5 +142,64 @@ class Html
 		$table .= "</tr></thead><tbody></tbdoy></table><div style = 'display:none;' id = 'div_oblagio_table'>".json_encode($labels)."</div>";
 
 		return $table;
+	}
+
+	public function oblagioModal()
+
+	{
+		return '
+		<div class="modal fade" id="elfinder_modal" role="dialog" >
+		      <div class="modal-lg">
+		      
+		        <!-- Modal content-->
+		        <div class="modal-content" style="width:100%;margin-left:30%;"> 
+		          <div class="modal-header">
+		            <button type="button" id = "elfinder_close" class="close" data-dismiss="modal">&times;</button>
+		            <h4 class="modal-title">Libraries</h4>
+		          </div>
+		          <div class="modal-body">
+		              
+		              <iframe scrolling="no" style="border:none;width:100%;height:450px;overflow:hidden;" src = '.helper()->urlBackend("popup-elfinder").'>
+		        
+		              </iframe>
+
+
+
+		          </div>
+		          <div class="modal-footer">
+		            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		          </div>
+		        </div>
+		        
+		      </div>
+		    </div>
+
+		';
+	}
+
+	public function oblagioFile($type , $options = [])
+
+	{
+		$defaultName = 'image';
+		$defaultPathName = helper()->assetUrl().'oblagio/images/image.png';
+	
+		(empty($options['name'])) ? $name = $defaultName : $name = $options['name'];
+
+		(empty($options['pathName'])) ? $pathName = $defaultPathName : $pathName = $options['pathName'];
+
+		$out ="
+
+		<div id = 'image_display'>
+            <img src= ".$pathName." />
+          </div>
+          ".Form::hidden($name , null , ['class' => 'form-control'])."
+          <a data-toggle='modal' data-target='#elfinder_modal' style = 'cursor:pointer;' onclick = 'addElfinder()'>Browse</a>
+
+		";
+
+		$out .= $this->oblagioModal();
+
+		return $out;
+
 	}
 }
