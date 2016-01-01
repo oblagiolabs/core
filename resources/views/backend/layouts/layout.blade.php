@@ -39,6 +39,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- jQuery 2.1.3 -->
     <script src="{{ helper()->adminLte() }}plugins/jQuery/jQuery-2.1.3.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
     <!-- Bootstrap 3.3.2 JS -->
     <!-- AdminLTE App -->

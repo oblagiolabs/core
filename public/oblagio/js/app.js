@@ -87,3 +87,9 @@ function cekAll(id)
 		$( "input[id^='child']" ).prop('checked', false);  
 	}
 }
+
+function addElfinder()
+
+{
+	
+}
