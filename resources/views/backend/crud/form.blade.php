@@ -26,7 +26,14 @@
                       <label>Address</label>
                       {!! Form::textarea('address' , null , ['class' => 'form-control']) !!}
                     </div>
-                   
+                    <div class="form-group">
+                        
+                          <label>Image</label>
+                          <img src="" /><br/>
+                          {!! Form::hidden('image' , null , ['class' => 'form-control' , 'style' => 'width:60%;']) !!}
+                          <a href = ''>Browse</a>  
+                    </div>
+
                   </div><!-- /.box-body -->
 
                   <div class="box-footer">
