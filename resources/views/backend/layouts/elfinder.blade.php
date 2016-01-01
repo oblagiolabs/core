@@ -27,14 +27,16 @@
 					}  
 					// , lang: 'ru'                    // language (OPTIONAL)
 				});
+
+				$("#media-library").elfinder({
+					url : '{{ helper()->elfinder() }}php/connector.minimal.php', // connector URL (REQUIRED)
+				});
 			});
 		</script>
     
 </head>
 <body>
+	@yield('content')
 
-<div id = 'elfinder'>
-
-</div>
 </body>
 </html>

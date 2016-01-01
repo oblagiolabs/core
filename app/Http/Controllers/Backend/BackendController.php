@@ -52,10 +52,16 @@ class BackendController extends Controller
 		]);
 	}	
 
-	public function elfinder()
+	public function mediaLibrary()
 
 	{
-		return view('backend.layouts.elfinder');
+		return view('backend.elfinders.media_library');
+	}
+
+	public function popupElfinder()
+
+	{
+		return view('backend.elfinders.elfinder');
 	}
 	
 }

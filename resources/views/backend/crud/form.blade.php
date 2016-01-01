@@ -66,7 +66,7 @@
           </div>
           <div class="modal-body">
               
-              <iframe scrolling="no" style="border:none;width:100%;height:450px;overflow:hidden;" src = '{{ helper()->urlBackend("elfinder") }}'>
+              <iframe scrolling="no" style="border:none;width:100%;height:450px;overflow:hidden;" src = '{{ helper()->urlBackend("popup-elfinder") }}'>
         
               </iframe>
 
