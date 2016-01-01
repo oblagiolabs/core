@@ -20,7 +20,11 @@
 			// https://github.com/Studio-42/elFinder/wiki/Client-configuration-options
 			$(document).ready(function() {
 				$('#elfinder').elfinder({
-					url : '{{ helper()->elfinder() }}php/connector.minimal.php'  // connector URL (REQUIRED)
+					url : '{{ helper()->elfinder() }}php/connector.minimal.php', // connector URL (REQUIRED)
+					getFileCallback : function(file){
+						$('#image_display', window.parent.document).html("<img src = '"+ file.url +"' width = '150' height = '150' />");
+						$("#elfinder_close" , window.parent.document).trigger("click");
+					}  
 					// , lang: 'ru'                    // language (OPTIONAL)
 				});
 			});
@@ -28,6 +32,7 @@
     
 </head>
 <body>
+
 <div id = 'elfinder'>
 
 </div>
