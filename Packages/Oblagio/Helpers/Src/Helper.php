@@ -22,6 +22,18 @@ class Helper
 		return asset(null);
 	}
 
+	public function publicContent($path = "")
+
+	{
+		return $this->assetUrl().'contents/'.$path;
+	}
+
+	public function publicPathContents($path ="")
+
+	{
+		return public_path('contents/'.$path);
+	}
+
 	public function adminLte()
 
 	{

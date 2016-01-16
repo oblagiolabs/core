@@ -29,7 +29,7 @@ class Crud extends Model
 
     	return [
     		'name' => 'required|unique:cruds'.$unique,
-    		'role' => 'required|email',
+    		'role' => 'required',
     		'address' => 'required'
     	];
     }

@@ -190,9 +190,9 @@ class Html
 		$out ="
 
 		<div id = 'image_display'>
-            <img src= ".$pathName." />
+            <img src= ".$pathName."  width = '200' height = '200' />
           </div>
-          ".Form::hidden($name , null , ['class' => 'form-control'])."
+          ".Form::hidden($name , null , ['class' => 'form-control' , 'id' => 'image'])."
           <a data-toggle='modal' data-target='#elfinder_modal' style = 'cursor:pointer;' onclick = 'addElfinder()'>Browse</a>
 
 		";

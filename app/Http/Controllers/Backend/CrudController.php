@@ -67,6 +67,7 @@ class CrudController extends BackendController
     {
         return view('backend.crud.form' , [
             'model' => $this->model,
+            'imagePath' => '',
         ]);
     }
 
@@ -77,14 +78,36 @@ class CrudController extends BackendController
 
         $save = $this->model->create($inputs);
 
+        //  upload image
+           
+           $image = str_replace("%20", " ", $request->image);
+           $path =  public_path().$image;
+
+           if(!empty($image))
+            {
+                $ext = pathinfo($path, PATHINFO_EXTENSION);
+                
+                $imageName = "image-".$save->id.".".$ext;
+                
+                $new_path = helper()->publicPathContents($imageName);
+                
+                $img = \Image::make($path)->resize(800, 600)->save($new_path);
+                
+                $this->model->find($save->id)->update(['image' => $imageName]);
+            }
+           
+        //
         return redirect(helper()->urlAction().'/index')->withSuccess('Data has been saved');
     }
 
     public function getUpdate($id)
 
     {
+        $model = $this->model->find($id);
+
         return view('backend.crud.form' , [
-            'model' => $this->model->find($id),
+            'model' => $model,
+            'imagePath' => helper()->publicContent($model->image),
         ]);
     }
 
@@ -93,7 +116,29 @@ class CrudController extends BackendController
     {
         $inputs = $request->all();
 
-        $save = $this->model->find($id)->update($inputs);
+        $model = $this->model->find($id);
+
+        $update = $model->update($inputs);
+
+        //  upload image
+           
+           $image = str_replace("%20", " ", $request->image);
+           $path =  public_path().$image;
+
+           if(!empty($image))
+            {
+                $ext = pathinfo($path, PATHINFO_EXTENSION);
+                
+                $imageName = "image-".$id.".".$ext;
+                
+                $new_path = helper()->publicPathContents($imageName);
+                
+                $img = \Image::make($path)->resize(800, 600)->save($new_path);
+                
+                $model->update(['image' => $imageName]);
+            }
+           
+        //
 
         return redirect(helper()->urlAction().'/index')->withSuccess('Data has been updated');
     }
@@ -108,6 +153,13 @@ class CrudController extends BackendController
         {
             try
             {
+                if(!empty($model->image))
+
+                {
+                    $path = helper()->publicPathContents($model->image);
+                    @unlink($path);
+                }
+
                 $model->delete();
                 
                 return redirect(helper()->urlAction().'/index')->withSuccess('Data has been deleted');

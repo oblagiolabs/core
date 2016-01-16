@@ -29,7 +29,7 @@
                     <div class="form-group">
                         
                           <label>Image</label><br/>
-                          {!! html()->oblagioFile('image' , ['name' => 'image']) !!}  
+                          {!! html()->oblagioFile('image' , ['name' => 'image' ,'pathName' => $imagePath]) !!}  
                     </div>
 
                   </div><!-- /.box-body -->
