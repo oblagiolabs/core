@@ -27,4 +27,36 @@ Fitur :
 
 ## Documentation
 
-Coming Soon ! 
+### Setting
+
+Buka File Setting.php di Packages/Oblagio/Setting.php
+
+```sh
+
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Konfigurasi
+|--------------------------------------------------------------------------
+|
+| Variable statusProject -> jika isinya dev maka menu developer pada aplikasi tetap ada jika isinya live maka menu developer hilang
+| Variable Backend -> variable yang berisi path uri backenend itu sendiri. jika variable backendName diubah maka uri nya pun berubah.
+|
+*/
+
+function oblagioSetting()
+
+{
+	return [
+		'statusProject' => 'dev',
+		'backendName' => 'admin-cp', 
+	];
+}
+
+?>
+```
+
+### Crud
+
+coming soon :)
