@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2016-01-16 23:32:28
+Date: 2016-01-21 02:36:46
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -51,7 +51,7 @@ CREATE TABLE `cruds` (
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of cruds
@@ -284,50 +284,3 @@ CREATE TABLE `users` (
 INSERT INTO users VALUES ('1', 'Muhamad Reza Abdul Rohim', 'reza.wikrama3@gmail.com', '$2y$10$A7cy5fCCKZqMKWUf2cB12u5j0rRNqZ0EDoTj6xRny.tIBMNlKaPpe', 'DcaKMCuz0y5FHABRApRaHVGVauZaVQJUfY15RgTz0LrbLPSvxCI1GaxhgaHP', '2015-12-25 15:52:22', '2015-12-28 01:56:30', 'reza', '1');
 INSERT INTO users VALUES ('5', 'admin ganteng', 'reza.wikrama2@gmail.com', '$2y$10$dDFeAJWlS6Vbnpc3hcj41OFXvrgtux0lElH/7rnjsN61ZsULMsZ6C', 'nrNyScamjebTrHdmiWxp9wQkzGzWbJhUvlr7ulcrU0g1D0peaW7QnpdrLU0M', '2015-12-26 01:09:12', '2015-12-26 02:53:56', 'admin', '5');
 
--- ----------------------------
--- Function structure for `cek_right`
--- ----------------------------
-DROP FUNCTION IF EXISTS `cek_right`;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` FUNCTION `cek_right`(param_action VARCHAR(20)  , param_menu_id INT , param_role_id INT) RETURNS varchar(20) CHARSET latin1
-BEGIN
-	DECLARE into_action INT;
-	DECLARE var_action VARCHAR(20);
-	DECLARE into_menu_action_id INT;
-	DECLARE into_right_id INT;
-
-	SELECT id INTO into_action FROM actions WHERE action = param_action LIMIT 1;
-
-	IF(into_action <> '') THEN
-
-		SELECT id INTO into_menu_action_id FROM menu_actions WHERE action_id = into_action  AND menu_id = param_menu_id LIMIT 1;
-
-		IF(into_menu_action_id <> '') THEN
-			
-			SELECT id INTO into_right_id FROM rights WHERE role_id = param_role_id AND menu_action_id = into_menu_action_id LIMIT 1;
-
-			IF(into_right_id <> '') THEN
-
-			SET var_action = 'true';
-			
-			ELSE
-				SET var_action = 'false';
-			
-			END IF;
-			
-		ELSE
-			SET var_action = 'go';
-			
-
-		END IF;
-
-			
-	ELSE
-		SET var_action = 'go';
-		
-	END IF;
-
-	RETURN var_action;
-END
-;;
-DELIMITER ;
