@@ -8,9 +8,17 @@ class HtmlServiceProvider extends ServiceProvider
 
 {
 
+	public function boot()
+
+	{
+
+	}
+
 	public function register()
 
 	{
+
+		$this->mergeConfigFrom(__DIR__.'/../../OblagioSetting.php' , 'config');
 
 		return $this->app->bind('register-html' ,  function(){
 

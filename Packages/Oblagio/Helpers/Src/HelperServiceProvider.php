@@ -12,6 +12,8 @@ class HelperServiceProvider extends ServiceProvider
 
 	{
 
+		$this->mergeConfigFrom(__DIR__.'/../../OblagioSetting.php','config');
+
 		return $this->app->bind('register-helper' ,  function(){
 
 			return new Helper;

@@ -10,14 +10,10 @@
 |
 */
 
-function oblagioSetting()
-
-{
-	return [
+return [
 	
 		'statusProject' => 'dev',
 	
 		'backendName' => 'admin-cp', 
 	
-	];
-}
+];

@@ -13,7 +13,7 @@ class Helper
 	public function __construct()
 
 	{
-		$this->backendName = oblagioSetting()['backendName'];
+		$this->backendName = config('config.backendName');
 	}
 
 	public function assetUrl()

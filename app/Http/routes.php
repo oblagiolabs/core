@@ -14,7 +14,8 @@ Route::get('oblagio-table' , 'Backend\BackendController@getOblagiotable');
 	
 Route::get('forgot-password' , 'Backend\AjaxController@forgotPassword');
 Route::controller('login' , 'Backend\LoginController');
-Route::group(['prefix' => oblagioSetting()['backendName'] , 'middleware' => ['auth' , 'right']] ,  function(){
+
+Route::group(['prefix' => config('config.backendName') , 'middleware' => ['auth' , 'right']] ,  function(){
 	
 	Route::get('/','Backend\DefaultController@getIndex');
 	

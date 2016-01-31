@@ -15,7 +15,7 @@
   <!-- Optionally, you can add icons to the links -->
   
   <?php
-    $statusProject = oblagioSetting()['statusProject'];
+    $statusProject = config('config.statusProject');
     if($statusProject == 'live')
     {
       $parents = $model->whereParentId(0)->where('id' , '!=' ,1)->orderBy('order' , 'asc')->get();
