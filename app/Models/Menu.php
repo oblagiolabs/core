@@ -10,19 +10,11 @@ class Menu extends Model
 
     public $guarded = [];
 
-    public function rules($id = "")
+    public function rules()
 
     {
-    	if(!empty($id))
-
-    	{
-    		$menuUnique = ',permalink,'.$id;
-    	}else{
-    		$menuUnique = '';
-    	}
-
     	return [
-    		'permalink' => 'required|unique:menus'.$menuUnique,
+    		'permalink' => 'required',
     	//	'controller' => 'required',
     		'label' => 'required',
     	];
