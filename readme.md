@@ -29,7 +29,7 @@ Fitur :
 
 ### Setting
 
-Buka File Setting.php di Packages/Oblagio/OblagioSetting.php
+Buka File OblagioSetting.php di Packages/Oblagio/OblagioSetting.php
 
 ```sh
 
