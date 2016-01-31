@@ -45,14 +45,14 @@ Buka File Setting.php di Packages/Oblagio/Setting.php
 |
 */
 
-function oblagioSetting()
 
-{
-	return [
-		'statusProject' => 'dev',
-		'backendName' => 'admin-cp', 
-	];
-}
+return [
+
+	'statusProject' => 'dev',
+	'backendName' => 'admin-cp', 
+
+];
+
 
 ?>
 ```
